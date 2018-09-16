@@ -118,11 +118,9 @@ show_conda_env() {
 export -f show_conda_env >/dev/null
 PS1='$(show_conda_env)'$PS1
 
-
-#. /Users/karthik/miniconda3/etc/profile.d/conda.sh
-
 eval "$(direnv hook zsh)"
 
-
-echo "Loading .zshrc"
+if [ -f ~/.zshrc_local ]; then
+    source ~/.zshrc_local
+fi
 
