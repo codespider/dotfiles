@@ -4,3 +4,6 @@
 [submodule "lib/fonts"]
 	path = lib/fonts
 	url = https://github.com/powerline/fonts.git
+[submodule "fonts"]
+	path = fonts
+	url = https://github.com/powerline/fonts.git
