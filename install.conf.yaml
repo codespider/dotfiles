@@ -5,6 +5,10 @@
 
 - clean: ['~']
 
+#- brewfile:
+#    # This accepts the same options as `brew bundle` command:
+#    file: Brewfile
+
 - link:
     ~/.zshenv: zshenv
     ~/.zprofile: zprofile
@@ -14,11 +18,8 @@
     ~/.bash_profile: bash_profile
     ~/.bashrc: bashrc
     ~/.gitconfig: gitconfig
-    "~/Library/Fonts/Ubuntu Mono derivative Powerline Bold.ttf": fonts/UbuntuMono/Ubuntu Mono derivative Powerline Bold.ttf
-    ~/Library/Fonts/Ubuntu Mono derivative Powerline.ttf: fonts/UbuntuMono/Ubuntu Mono derivative Powerline.ttf
-    ~/Library/Fonts/Ubuntu Mono derivative Powerline Bold Italic.ttf: fonts/UbuntuMono/Ubuntu Mono derivative Powerline Bold Italic.ttf
-    ~/Library/Fonts/Ubuntu Mono derivative Powerline Italic.ttf: fonts/UbuntuMono/Ubuntu Mono derivative Powerline Italic.ttf    
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
+  - [sh fonts/install.sh, Installing Powerline Fonts]
 
