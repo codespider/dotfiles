@@ -23,6 +23,8 @@ brew 'zsh-completions'
 brew 'telnet'
 brew 'remake'
 brew 'bat'
+brew 'kubernetes-cli'
+brew 'stern'
 
 cask 'bettertouchtool'
 cask 'flux'
@@ -55,8 +57,8 @@ cask 'screenflow'
 cask 'sourcetree'
 cask 'iterm2'
 cask 'zoomus'
-
-
+cask 'gitup'
+cask 'google-cloud-sdk'
 
 mas 'Battery Guru', id: 529376620
 mas 'BetterSnapTool', id: 417375580

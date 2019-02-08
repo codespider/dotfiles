@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/karthik/.oh-my-zsh"
@@ -10,6 +10,7 @@ export ZSH="/Users/karthik/.oh-my-zsh"
 #ZSH_THEME="robbyrussell"
 ZSH_THEME="agnoster"
 #ZSH_THEME="avit"
+#ZSH_THEME="amuse"
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -102,25 +103,40 @@ source $ZSH/oh-my-zsh.sh
 fpath=(/usr/local/share/zsh-completions $fpath)
 
 
-show_virtual_env() {
-  if [ -n "$VIRTUAL_ENV" ]; then
-    echo "($(basename $VIRTUAL_ENV))"
-  fi
-}
-export -f show_virtual_env  >/dev/null
-PS1='$(show_virtual_env)'$PS1
-
-show_conda_env() {
-  if [ -n "$CONDA_DEFAULT_ENV" ]; then
-    echo "($(basename $CONDA_DEFAULT_ENV))"
-  fi
-}
-export -f show_conda_env >/dev/null
-PS1='$(show_conda_env)'$PS1
-
-eval "$(direnv hook zsh)"
-
 if [ -f ~/.zshrc_local ]; then
     source ~/.zshrc_local
 fi
 
+
+GOPATH=~/go
+export GOPATH
+PATH=${PATH}:${GOPATH}/bin
+export PATH
+
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+if [ -f /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc ]; then
+    source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
+fi
+
+if [ -f /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc ]; then
+    source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
+fi
+
+
+if ! type stern > /dev/null; then
+    echo "hello"
+    source <(stern --completion=zsh)
+fi
+
+source <(stern --completion=zsh)
+
+eval "$(rbenv init -)"
+
+
+#alias
+alias be='bundle exec '
+alias gg='git gui & '
+alias gpr='git pull --rebase '
+alias gk='gitk & '
