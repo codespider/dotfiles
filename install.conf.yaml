@@ -5,9 +5,9 @@
 
 - clean: ['~']
 
-#- brewfile:
-#    # This accepts the same options as `brew bundle` command:
-#    file: Brewfile
+- brewfile:
+    # This accepts the same options as `brew bundle` command:
+    file: Brewfile
 
 - link:
     ~/.zshenv: zshenv
