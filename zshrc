@@ -7,8 +7,8 @@ export ZSH="/Users/karthik/.oh-my-zsh"
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-#ZSH_THEME="robbyrussell"
-ZSH_THEME="agnoster"
+ZSH_THEME="robbyrussell"
+#ZSH_THEME="agnoster"
 #ZSH_THEME="avit"
 #ZSH_THEME="amuse"
 
@@ -65,8 +65,16 @@ ZSH_THEME="agnoster"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git
+  git zsh-syntax-highlighting osx docker docker-compose vagrant helm
 )
+#git zsh-syntax-highlighting osx docker docker-compose zsh-autosuggestions vagrant
+prompt_dir() {
+  #prompt_segment blue $CURRENT_FG '%~'
+
+ # prompt_segment blue $CURRENT_FG '%(4~|.../%3~|%~)'
+
+  prompt_segment blue $CURRENT_FG '%(5~|%-1~/…/%2~|%4~)'
+}
 
 source $ZSH/oh-my-zsh.sh
 
@@ -113,6 +121,7 @@ export GOPATH
 PATH=${PATH}:${GOPATH}/bin
 export PATH
 
+[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
@@ -134,8 +143,30 @@ source <(stern --completion=zsh)
 
 eval "$(rbenv init -)"
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export REPO_HOME=~/code1
+export PATH=/usr/local/sbin:$PATH
+export PATH=/usr/local/miniconda3/bin:$PATH
+export PATH=$HOME/.cargo/bin:$PATH
+
+alias l='exa'
+
+unsetopt inc_append_history
+unsetopt share_history
+setopt APPEND_HISTORY
+
+export LC_ALL=en_US.UTF-8
 
 #alias
+alias rcd='cd $(repo ls | fzf --height 10 --border)'
+alias cat=bat
+alias vim=nvim
+alias vi=nvim
+alias k=kubectl
+alias ktx=kubectx
+alias kns=kubens
+
 alias be='bundle exec '
 alias gg='git gui & '
 alias gpr='git pull --rebase '
